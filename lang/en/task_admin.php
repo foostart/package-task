@@ -2,41 +2,41 @@
 
 return [
 
-    "package_name" => 'Sample',
-    "package_description" => 'Sample package is for initial',
+    "package_name" => 'Task',
+    "package_description" => 'Task package is for initial',
     "order" => '#',
     "operations" => 'Operations',
-    'sample_category_name_label' => 'Sample category name:',
+    'task_category_name_label' => 'Task category name:',
     /**
      * Page
      */
 
-    'page_list' => 'List of samples',
+    'page_list' => 'List of tasks',
     'page_add' => 'Add new item',
-    'page_edit' => 'Update sample item',
-    'page_search' => 'Sample page search',
-    'page_category'=> 'List categories of sample',
+    'page_edit' => 'Update task item',
+    'page_search' => 'Task page search',
+    'page_category'=> 'List categories of task',
 
     /**
      * Form
      */
     'form_heading' => 'General data',
-    'form_add' => 'Add new sample item',
-    'form_edit' => 'Update sample item',
+    'form_add' => 'Add new task item',
+    'form_edit' => 'Update task item',
     'name' => 'Name',
-    'sample_required_name' => 'Required name',
+    'task_required_name' => 'Required name',
     'required' => 'is required',
     'search' => 'Search',
-    'sample_name_label' => 'Sample name:',
-    'sample_name_placeholder' => 'sample name',
-    'sample_category_name'=> 'Sample category name',
+    'task_name_label' => 'Task name:',
+    'task_name_placeholder' => 'task name',
+    'task_category_name'=> 'Task category name',
 
     /**
      * Message
      */
-    'message_update_successfully' => 'Update sample item successfully',
-    'message_add_successfully' => 'Add new sample item successfully',
-    'message_delete_successfully' => 'Delete sample item successfully',
+    'message_update_successfully' => 'Update task item successfully',
+    'message_add_successfully' => 'Add new task item successfully',
+    'message_delete_successfully' => 'Delete task item successfully',
     'message_find_failed' => 'No results found.',
 
     /**
@@ -44,7 +44,7 @@ return [
      */
     'title_unvalid_length' => 'Unvalid lenght title. Allow from: <b>:TITLE_MIN_LENGTH</b> to <b>:TITLE_MAX_LENGTH</b>.',
 
-    'sample_name' => 'Sample name',
+    'task_name' => 'Task name',
 
     /**
      * Validator message
@@ -62,7 +62,7 @@ return [
     ///////////////////////////CATEGORIES///////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     'page_category_list' => 'Categories',
-    'sample_category_add_button' => 'Add new sample category',
-    'sample_categoty_id' => 'Category ID',
-    'sample_categoty_name' => 'Category name',
+    'task_category_add_button' => 'Add new task category',
+    'task_categoty_id' => 'Category ID',
+    'task_categoty_name' => 'Category name',
 ];

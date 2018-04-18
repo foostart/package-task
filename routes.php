@@ -5,9 +5,9 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('sample', [
-    'as' => 'sample',
-    'uses' => 'Foostart\Sample\Controllers\Front\SampleFrontController@index'
+Route::get('task', [
+    'as' => 'task',
+    'uses' => 'Foostart\Task\Controllers\Front\TaskFrontController@index'
 ]);
 
 
@@ -24,33 +24,33 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('/admin/sample', [
-            'as' => 'admin_sample',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@index'
+        Route::get('/admin/task', [
+            'as' => 'admin_task',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/sample/edit', [
-            'as' => 'admin_sample.edit',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@edit'
+        Route::get('admin/task/edit', [
+            'as' => 'admin_task.edit',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@edit'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/sample/edit', [
-            'as' => 'admin_sample.post',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@post'
+        Route::post('admin/task/edit', [
+            'as' => 'admin_task.post',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/sample/delete', [
-            'as' => 'admin_sample.delete',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@delete'
+        Route::get('admin/task/delete', [
+            'as' => 'admin_task.delete',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@delete'
         ]);
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////SAMPLES ROUTE///////////////////////////////
@@ -63,32 +63,32 @@ Route::group(['middleware' => ['web']], function () {
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////CATEGORIES///////////////////////////////
         ////////////////////////////////////////////////////////////////////////
-         Route::get('admin/sample_category', [
-            'as' => 'admin_sample_category',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@index'
+         Route::get('admin/task_category', [
+            'as' => 'admin_task_category',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/sample_category/edit', [
-            'as' => 'admin_sample_category.edit',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@edit'
+        Route::get('admin/task_category/edit', [
+            'as' => 'admin_task_category.edit',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@edit'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/sample_category/edit', [
-            'as' => 'admin_sample_category.post',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@post'
+        Route::post('admin/task_category/edit', [
+            'as' => 'admin_task_category.post',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@post'
         ]);
          /**
          * delete
          */
-        Route::get('admin/sample_category/delete', [
-            'as' => 'admin_sample_category.delete',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@delete'
+        Route::get('admin/task_category/delete', [
+            'as' => 'admin_task_category.delete',
+            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@delete'
         ]);
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////CATEGORIES///////////////////////////////

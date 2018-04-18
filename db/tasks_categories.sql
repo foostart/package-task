@@ -23,20 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `samples_categories`
+-- Table structure for table `tasks_categories`
 --
 
-DROP TABLE IF EXISTS `samples_categories`;
-CREATE TABLE `samples_categories` (
-  `sample_category_id` int(11) NOT NULL,
-  `sample_category_name` varchar(55) COLLATE utf8_unicode_ci NOT NULL
+DROP TABLE IF EXISTS `tasks_categories`;
+CREATE TABLE `tasks_categories` (
+  `task_category_id` int(11) NOT NULL,
+  `task_category_name` varchar(55) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `samples_categories`
+-- Dumping data for table `tasks_categories`
 --
 
-INSERT INTO `samples_categories` (`sample_category_id`, `sample_category_name`) VALUES
+INSERT INTO `tasks_categories` (`task_category_id`, `task_category_name`) VALUES
 (1, 'Foo'),
 (2, 'Var'),
 (3, 'List'),
@@ -48,20 +48,20 @@ INSERT INTO `samples_categories` (`sample_category_id`, `sample_category_name`) 
 --
 
 --
--- Indexes for table `samples_categories`
+-- Indexes for table `tasks_categories`
 --
-ALTER TABLE `samples_categories`
-  ADD PRIMARY KEY (`sample_category_id`);
+ALTER TABLE `tasks_categories`
+  ADD PRIMARY KEY (`task_category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `samples_categories`
+-- AUTO_INCREMENT for table `tasks_categories`
 --
-ALTER TABLE `samples_categories`
-  MODIFY `sample_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `tasks_categories`
+  MODIFY `task_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

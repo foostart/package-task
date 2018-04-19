@@ -16,82 +16,96 @@ Route::get('task', [
  */
 Route::group(['middleware' => ['web']], function () {
 
-    Route::group(['middleware' => ['admin_logged', 'can_see']], function () {
+    Route::group(['middleware' => ['admin_logged', 'can_see'],
+                  'namespace' => 'Foostart\Task\Controllers\Admin',
+        ], function () {
 
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////SAMPLES ROUTE///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
+        /*
+          |-----------------------------------------------------------------------
+          | Manage task
+          |-----------------------------------------------------------------------
+          | 1. List of tasks
+          | 2. Edit task
+          | 3. Delete task
+          | 4. Add new task
+          | 5. Manage configurations
+          | 6. Manage languages
+          |
+        */
+
         /**
          * list
          */
-        Route::get('/admin/task', [
-            'as' => 'admin_task',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@index'
+        Route::get('admin/tasks', [
+            'as' => 'tasks.list',
+            'uses' => 'TaskAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/task/edit', [
-            'as' => 'admin_task.edit',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@edit'
+        Route::get('admin/tasks/edit', [
+            'as' => 'tasks.edit',
+            'uses' => 'TaskAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/tasks/copy', [
+            'as' => 'tasks.copy',
+            'uses' => 'TaskAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/task/edit', [
-            'as' => 'admin_task.post',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@post'
+        Route::post('admin/tasks/edit', [
+            'as' => 'tasks.post',
+            'uses' => 'TaskAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/task/delete', [
-            'as' => 'admin_task.delete',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskAdminController@delete'
-        ]);
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////SAMPLES ROUTE///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-
-
-
-
-        
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////CATEGORIES///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-         Route::get('admin/task_category', [
-            'as' => 'admin_task_category',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@index'
+        Route::get('admin/tasks/delete', [
+            'as' => 'tasks.delete',
+            'uses' => 'TaskAdminController@delete'
         ]);
 
         /**
-         * edit-add
+         * trash
          */
-        Route::get('admin/task_category/edit', [
-            'as' => 'admin_task_category.edit',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@edit'
+         Route::get('admin/tasks/trash', [
+            'as' => 'tasks.trash',
+            'uses' => 'TaskAdminController@trash'
         ]);
 
         /**
-         * post
-         */
-        Route::post('admin/task_category/edit', [
-            'as' => 'admin_task_category.post',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@post'
+         * configs
+        */
+        Route::get('admin/tasks/config', [
+            'as' => 'tasks.config',
+            'uses' => 'TaskAdminController@config'
         ]);
-         /**
-         * delete
-         */
-        Route::get('admin/task_category/delete', [
-            'as' => 'admin_task_category.delete',
-            'uses' => 'Foostart\Task\Controllers\Admin\TaskCategoryAdminController@delete'
+
+        Route::post('admin/tasks/config', [
+            'as' => 'tasks.config',
+            'uses' => 'TaskAdminController@config'
         ]);
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////CATEGORIES///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
+
+        /**
+         * language
+        */
+        Route::get('admin/tasks/lang', [
+            'as' => 'tasks.lang',
+            'uses' => 'TaskAdminController@lang'
+        ]);
+
+        Route::post('admin/tasks/lang', [
+            'as' => 'tasks.lang',
+            'uses' => 'TaskAdminController@lang'
+        ]);
+
     });
 });

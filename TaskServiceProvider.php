@@ -4,10 +4,9 @@ namespace Foostart\Task;
 
 use Illuminate\Support\ServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
-
-use URL, Route;
+use URL,
+    Route;
 use Illuminate\Http\Request;
-
 
 class TaskServiceProvider extends ServiceProvider {
 
@@ -17,30 +16,27 @@ class TaskServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot(Request $request) {
-        /**
-         * Publish
-         */
-         $this->publishes([
-            __DIR__.'/config/task_admin.php' => config_path('task_admin.php'),
-        ],'config');
 
-        $this->loadViewsFrom(__DIR__ . '/views', 'task');
+        //generate context key
+//        $this->generateContextKey();
 
+        // load view
+        $this->loadViewsFrom(__DIR__ . '/Views', 'package-task');
 
-        /**
-         * Translations
-         */
-         $this->loadTranslationsFrom(__DIR__.'/lang', 'task');
+        // include view composers
+        require __DIR__ . "/composers.php";
 
+        // publish config
+        $this->publishConfig();
 
-        /**
-         * Load view composer
-         */
-        $this->taskViewComposer($request);
+        // publish lang
+        $this->publishLang();
 
-         $this->publishes([
-                __DIR__.'/../database/migrations/' => database_path('migrations')
-            ], 'migrations');
+        // publish views
+        $this->publishViews();
+
+        // publish assets
+        $this->publishAssets();
 
     }
 
@@ -51,55 +47,46 @@ class TaskServiceProvider extends ServiceProvider {
      */
     public function register() {
         include __DIR__ . '/routes.php';
-
-        /**
-         * Load controllers
-         */
-        $this->app->make('Foostart\Task\Controllers\Admin\TaskAdminController');
-
-         /**
-         * Load Views
-         */
-        $this->loadViewsFrom(__DIR__ . '/views', 'task');
     }
 
     /**
-     *
+     * Public config to system
+     * @source: vendor/foostart/package-task/config
+     * @destination: config/
      */
-    public function taskViewComposer(Request $request) {
+    protected function publishConfig() {
+        $this->publishes([
+            __DIR__ . '/config/package-task.php' => config_path('package-task.php'),
+                ], 'config');
+    }
 
-        view()->composer('task::task*', function ($view) {
-            global $request;
-            $task_id = $request->get('id');
-            $is_action = empty($task_id)?'page_add':'page_edit';
+    /**
+     * Public language to system
+     * @source: vendor/foostart/package-task/lang
+     * @destination: resources/lang
+     */
+    protected function publishLang() {
+        $this->publishes([
+            __DIR__ . '/lang' => base_path('resources/lang'),
+        ]);
+    }
 
-            $view->with('sidebar_items', [
+    /**
+     * Public view to system
+     * @source: vendor/foostart/package-task/Views
+     * @destination: resources/views/vendor/package-task
+     */
+    protected function publishViews() {
 
-                /**
-                 * Tasks
-                 */
-                //list
-                trans('task::task_admin.page_list') => [
-                    'url' => URL::route('admin_task'),
-                    "icon" => '<i class="fa fa-list-ul"></i>'
-                ],
-                //add
-                trans('task::task_admin.'.$is_action) => [
-                    'url' => URL::route('admin_task.edit'),
-                    "icon" => '<i class="fa fa-pencil-square-o"></i>'
-                ],
+        $this->publishes([
+            __DIR__ . '/Views' => base_path('resources/views/vendor/package-task'),
+        ]);
+    }
 
-                /**
-                 * Categories
-                 */
-                //list
-                trans('task::task_admin.page_category_list') => [
-                    'url' => URL::route('admin_task_category'),
-                    "icon" => '<i class="fa fa-sitemap"></i>'
-                ],
-            ]);
-            //
-        });
+    protected function publishAssets() {
+        $this->publishes([
+            __DIR__ . '/public' => public_path('packages/foostart/package-task'),
+        ]);
     }
 
 }

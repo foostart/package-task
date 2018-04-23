@@ -40,10 +40,10 @@
                     </h3>
                 </div>
 
-                <!--DESCRIPTION-->
-                <div class='panel-description'>
-                    {!! trans($plang_admin.'.descriptions.form') !!}</h4>
-                </div>
+                    <!--DESCRIPTION-->
+                    <div class='panel-description'>
+                        {!! trans($plang_admin.'.descriptions.form') !!}</h4>
+                    </div>
 
                 <!-- ERRORS NAME  -->
                 @if($errors->count() > 0)
